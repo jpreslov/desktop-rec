@@ -70,8 +70,8 @@ namespace DesktopRec
 
                 double megabytesRecorded = (double)totalBytesRecorded / bytesPerMegabyte;
 
-                // Display the recorded data size in MB
-                Console.WriteLine($"Recording... {megabytesRecorded:F2} MB recorded. Press any key to stop.");
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write($"Recording... {megabytesRecorded:F2} MB recorded. Press any key to stop.");
             };
 
             capture.RecordingStopped += (s, e) =>
@@ -90,6 +90,7 @@ namespace DesktopRec
                 {
                     capture.StopRecording();
                     playback.Dispose();
+
                     Console.WriteLine("Recording stopped. Audio file saved as output.wav.");
                     return;
                 }
